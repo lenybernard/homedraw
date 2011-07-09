@@ -17,7 +17,7 @@ $(document).ready(function(){
                     e = window.event;
                     cursor = new Point(e.x-p.left,e.y-p.top,1);
                 }
-                var newOrigin = new Point(parseInt(housemanager.getOriginMovePoint.getX()-cursor.getX()-houseManager.getOrigin().getX()),parseInt(housemanager.getOriginMovePoint.getY()-cursor.getY()-houseManager.getOrigin().getY()));
+                var newOrigin = new Point(parseInt(houseManager.getOriginMovePoint().getX()-cursor.getX()+houseManager.getOrigin().getX()),parseInt(houseManager.getOriginMovePoint().getY()-cursor.getY()+houseManager.getOrigin().getY()));
                 $("#drawer").css("background-position", newOrigin.getX()+"px "+newOrigin.getY()+"px");
                 houseManager.setOrigin(newOrigin.getX(),newOrigin.getY());
                 clearCanva();
@@ -42,9 +42,7 @@ $(document).ready(function(){
         }
     });
     $("#drawer").mouseup(function(e){
-        if(houseManager.getTool() == "draw"){
-            addPoint(e);
-        }else if(houseManager.getTool() == "move"){
+        if(houseManager.getTool() == "move"){
             houseManager.initMove();
         }
     });

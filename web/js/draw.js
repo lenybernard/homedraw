@@ -71,7 +71,7 @@ function computeNearestCoordinate(number){
 function putInDrawer(pt,pt2){
     var p = $("#drawer").position();
     var point, point2;
-    if(pt.getX()/houseManager.getZoom()>$("#drawer").width() || pt.getY()/houseManager.getZoom()>$("#drawer").height()){
+    if((pt.getX()/houseManager.getZoom())+houseManager.getOrigin().getX()>$("#drawer").width() || (pt.getY()/houseManager.getZoom())+houseManager.getOrigin().getY()>$("#drawer").height()){
         point = new Point(pt.getX(),pt.getY());
         point2 = new Point(pt2.getX(),pt2.getY());
     }else{
